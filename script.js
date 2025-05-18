@@ -6,7 +6,7 @@ const sounds = ["applause","boo","gasp","tada","victory","wrong"];
 	button.className = "btn";
 	button.textContent = sound;
 	button.addEventListener("click",()=>{
-		const audio = new Audio(`sounds/${sound}.mp3`);
+		const audio = new Audio(`./sounds/${sound}.mp3`);
 		audio.play();
 	});
 	div.appendChild(button);
@@ -16,7 +16,7 @@ stopBtn.classList.add("stop");
 stopBtn.classList.add("btn");
 stopBtn.textContent = "stop";
 stopBtn.addEventListener("click",()=>{
-	const audion = new Audio(`sounds/stop.mp3`);
+	const audio = new Audio(`./sounds/stop.mp3`);
 	audio.play();
 });
 div.appendChild(stopBtn);
