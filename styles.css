@@ -1,1 +1,22 @@
-/*  your css code here. If applicable */
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+html,body{
+	height:100%;
+	width:100%;
+}
+#buttons{
+	display:flex;
+	align-items:center;
+	justify-content:space-around;
+	background-color:#A164DF;
+	height:100%;
+	width:100%;
+}
+.btn{
+	padding:0.5rem 0.7rem;
+	color:white;
+	background-color:#663399;
+}
