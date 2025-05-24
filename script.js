@@ -11,7 +11,6 @@ let currentAudio = null;
 function stopSounds() {
 	if(currentAudio){
 		currentAudio.pause();
-		currentAudio.currentTime = 0;
 		currentAudio = null;
 	}
 }
