@@ -1,22 +1,32 @@
-//your JS code here. If required.
-const div = document.getElementById("buttons");
-const sounds = ["applause","boo","gasp","tada","victory","wrong"];
-[...sounds].forEach((sound)=>{
-	const button = document.createElement("button");
-	button.className = "btn";
-	button.textContent = sound;
-	button.addEventListener("click",()=>{
-		const audio = new Audio(`./sounds/${sound}.mp3`);
-		audio.play();
+const buttons = document.getElementsByClassName("btn");
+let currentAudio = null;
+[...buttons].forEach((button)=>{
+	button.addEventListener("click",(event)=>{
+		const audioName = event.target.getAttribute("data-sound");
+		if(audioName==="stop")
+			stopSounds();
+		else playSound(audioName);
 	});
-	div.appendChild(button);
 });
-const stopBtn = document.createElement("button");
-stopBtn.classList.add("stop");
-stopBtn.classList.add("btn");
-stopBtn.textContent = "stop";
-stopBtn.addEventListener("click",()=>{
-	const audio = new Audio(`./sounds/stop.mp3`);
-	audio.play();
-});
-div.appendChild(stopBtn);
+function stopSounds() {
+	if(currentAudio){
+		currentAudio.pause();
+		currentAudio.currentTime = 0;
+		currentAudio = null;
+	}
+}
+function playSound(soundName) {
+		stopSounds();
+	currentAudio = new Audio(`sounds/${soundName}.mp3`);
+	try{
+		 currentAudio.play().catch(error => {
+                    console.error('Error playing sound:', error);
+                    currentAudio.addEventListener('ended', function() {
+                    currentAudio = null;
+                });
+                });
+	}
+	catch(error){
+		console.log("second error: ", error);
+	}
+}

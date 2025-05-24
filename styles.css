@@ -10,7 +10,9 @@ html,body{
 #buttons{
 	display:flex;
 	align-items:center;
-	justify-content:space-around;
+	justify-content:center;
+	flex-wrap:wrap;
+	gap:0.5rem;
 	background-color:#A164DF;
 	height:100%;
 	width:100%;
